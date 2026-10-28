@@ -34,6 +34,8 @@ EventHub/
 │   └── EventHub.Admin/         # Quản trị viên: duyệt nhà cung cấp, dịch vụ, báo cáo doanh thu
 │
 ├── docs/                       # Tài liệu thiết kế & đặc tả hệ thống
+│   ├── UI_FLOW_AND_MOCKUPS.md  # Chi tiết luồng người dùng & bộ ảnh Mockup ứng dụng
+│   ├── mockups/                # Toàn bộ hình ảnh Mockup/Screenshots độ phân giải cao
 │   ├── database/               # ERD thiết kế cơ sở dữ liệu & State transitions
 │   ├── api/                    # Đặc tả REST API Endpoints
 │   └── diagrams/               # Kiến trúc & sơ đồ tuần tự
