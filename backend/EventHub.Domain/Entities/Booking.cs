@@ -31,6 +31,9 @@ namespace EventHub.Domain.Entities
         public string? RejectionReason { get; set; }
         public string? CancellationReason { get; set; }
         public Guid? CancelledByUserId { get; set; }
+        public int? Rating { get; set; }
+        public string? ReviewComment { get; set; }
+        public DateTime? ReviewedAt { get; set; }
 
         public DateTime StatusUpdatedAt { get; set; } = DateTime.UtcNow;
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;

@@ -26,6 +26,7 @@ namespace EventHub.Infrastructure.Data
                 b.Property(x => x.PackagePriceSnapshot).HasPrecision(18, 2);
                 b.Property(x => x.TotalAmount).HasPrecision(18, 2);
                 b.Property(x => x.Status).HasMaxLength(50);
+                b.Property(x => x.ReviewComment).HasMaxLength(1000);
             });
 
             modelBuilder.Entity<ApplicationUser>(u =>

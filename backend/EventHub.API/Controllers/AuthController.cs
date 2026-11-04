@@ -69,6 +69,11 @@ namespace EventHub.API.Controllers
                 return Unauthorized(new { message = "Mật khẩu không chính xác." });
             }
 
+            if (!user.IsActive)
+            {
+                return Unauthorized(new { message = "Tài khoản của bạn đã bị tạm khóa bởi Quản trị viên." });
+            }
+
             var token = $"token_{user.Id}_{Guid.NewGuid():N}";
 
             return Ok(new
@@ -152,10 +157,35 @@ namespace EventHub.API.Controllers
         public async Task<IActionResult> GetCurrentUser()
         {
             // Lấy user demo mặc định hoặc theo Authorization header nếu có
-            var defaultUser = await _context.Users.FirstOrDefaultAsync();
+            ApplicationUser? defaultUser = null;
+            if (Request.Headers.TryGetValue("Authorization", out var authHeader))
+            {
+                var tokenStr = authHeader.ToString().Trim();
+                if (tokenStr.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase))
+                {
+                    tokenStr = tokenStr.Substring(7).Trim();
+                }
+
+                var parts = tokenStr.Split('_');
+                if (parts.Length >= 2 && Guid.TryParse(parts[1], out var parsedId))
+                {
+                    defaultUser = await _context.Users.FirstOrDefaultAsync(u => u.Id == parsedId);
+                }
+                else if (Guid.TryParse(tokenStr, out var directGuid))
+                {
+                    defaultUser = await _context.Users.FirstOrDefaultAsync(u => u.Id == directGuid);
+                }
+            }
+
+            defaultUser ??= await _context.Users.FirstOrDefaultAsync();
             if (defaultUser == null)
             {
                 return Unauthorized(new { message = "Chưa có tài khoản nào trong hệ thống." });
+            }
+
+            if (!defaultUser.IsActive)
+            {
+                return Unauthorized(new { message = "Tài khoản của bạn đã bị tạm khóa bởi Quản trị viên." });
             }
 
             return Ok(new

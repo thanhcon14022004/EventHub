@@ -127,6 +127,41 @@ namespace EventHub.API.Controllers
             await _context.SaveChangesAsync();
             return Ok(new { success = true, message = "Đã xóa đơn đặt thành công." });
         }
+
+        /// <summary>
+        /// POST /api/bookings/{id}/review - Khách hàng đánh giá dịch vụ sau khi hoàn thành
+        /// </summary>
+        [HttpPost("{id}/review")]
+        public async Task<IActionResult> ReviewBooking(Guid id, [FromBody] ReviewBookingRequest request)
+        {
+            if (request == null)
+            {
+                return BadRequest(new { message = "Dữ liệu đánh giá không hợp lệ." });
+            }
+
+            if (request.Rating < 1 || request.Rating > 5)
+            {
+                return BadRequest(new { message = "Điểm đánh giá phải từ 1 đến 5 sao." });
+            }
+
+            var booking = await _context.Bookings.FindAsync(id);
+            if (booking == null)
+            {
+                return NotFound(new { message = "Không tìm thấy đơn đặt." });
+            }
+
+            if (!string.Equals(booking.Status, "Completed", StringComparison.OrdinalIgnoreCase))
+            {
+                return BadRequest(new { message = "Chỉ có thể đánh giá những đơn đặt đã hoàn thành." });
+            }
+
+            booking.Rating = request.Rating;
+            booking.ReviewComment = request.ReviewComment?.Trim();
+            booking.ReviewedAt = DateTime.UtcNow;
+
+            await _context.SaveChangesAsync();
+            return Ok(new { message = "Gửi đánh giá thành công.", booking });
+        }
     }
 
     [ApiController]
@@ -184,6 +219,22 @@ namespace EventHub.API.Controllers
             await _context.SaveChangesAsync();
 
             return Ok(new { message = "Đã từ chối đơn đặt.", booking });
+        }
+
+        /// <summary>
+        /// POST /api/provider/bookings/{id}/inprogress - Nhà cung cấp bắt đầu thực hiện dịch vụ
+        /// </summary>
+        [HttpPost("{id}/inprogress")]
+        public async Task<IActionResult> StartBooking(Guid id)
+        {
+            var booking = await _context.Bookings.FindAsync(id);
+            if (booking == null) return NotFound(new { message = "Không tìm thấy đơn đặt." });
+
+            booking.Status = "InProgress";
+            booking.StatusUpdatedAt = DateTime.UtcNow;
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "Đã chuyển trạng thái đơn sang đang thực hiện.", booking });
         }
 
         /// <summary>
@@ -282,6 +333,12 @@ namespace EventHub.API.Controllers
     public class RejectBookingRequest
     {
         public string? RejectionReason { get; set; }
+    }
+
+    public class ReviewBookingRequest
+    {
+        public int Rating { get; set; }
+        public string? ReviewComment { get; set; }
     }
 
     public class BulkCheckoutRequest

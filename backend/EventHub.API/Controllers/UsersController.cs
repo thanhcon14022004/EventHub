@@ -107,6 +107,32 @@ namespace EventHub.API.Controllers
         }
 
         /// <summary>
+        /// PUT /api/users/{id}/toggle-status - Khóa hoặc mở khóa tài khoản người dùng
+        /// </summary>
+        [HttpPut("{id}/toggle-status")]
+        public async Task<IActionResult> ToggleUserStatus(Guid id)
+        {
+            var user = await _context.Users.FindAsync(id);
+            if (user == null)
+            {
+                return NotFound(new { message = $"Không tìm thấy người dùng với Id: {id}" });
+            }
+
+            user.IsActive = !user.IsActive;
+            user.UpdatedAt = DateTime.UtcNow;
+            await _context.SaveChangesAsync();
+
+            return Ok(new
+            {
+                success = true,
+                message = user.IsActive ? "Tài khoản đã được kích hoạt thành công." : "Tài khoản đã bị tạm khóa.",
+                userId = user.Id,
+                isActive = user.IsActive,
+                updatedAt = user.UpdatedAt
+            });
+        }
+
+        /// <summary>
         /// POST /api/users/seed - Kích hoạt nạp lại dữ liệu người dùng mẫu
         /// </summary>
         [HttpPost("seed")]
