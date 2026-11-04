@@ -257,6 +257,47 @@ class AppTranslations {
       AppLanguage.vi: 'Đăng xuất tài khoản',
       AppLanguage.en: 'Log Out Account',
     },
+    // Favorites / Wishlist
+    'favorites_title': {
+      AppLanguage.vi: 'Dịch vụ yêu thích',
+      AppLanguage.en: 'Favorite Services',
+    },
+    'favorites_subtitle': {
+      AppLanguage.vi: 'Các dịch vụ bạn đã lưu để lên kế hoạch sự kiện',
+      AppLanguage.en: 'Services you saved for event planning',
+    },
+    'favorites_saved_count': {
+      AppLanguage.vi: 'dịch vụ đã lưu',
+      AppLanguage.en: 'saved services',
+    },
+    'favorites_clear_all': {
+      AppLanguage.vi: 'Xóa tất cả',
+      AppLanguage.en: 'Clear All',
+    },
+    'favorites_clear_confirm_title': {
+      AppLanguage.vi: 'Xóa danh sách yêu thích?',
+      AppLanguage.en: 'Clear all favorites?',
+    },
+    'favorites_clear_confirm_desc': {
+      AppLanguage.vi: 'Bạn có chắc muốn xóa tất cả dịch vụ khỏi danh sách yêu thích?',
+      AppLanguage.en: 'Are you sure you want to remove all saved services?',
+    },
+    'favorites_empty_title': {
+      AppLanguage.vi: 'Chưa có dịch vụ yêu thích',
+      AppLanguage.en: 'No favorites yet',
+    },
+    'favorites_empty_desc': {
+      AppLanguage.vi: 'Nhấn vào biểu tượng trái tim ❤️ ở bất kỳ dịch vụ nào để lưu lại danh sách cần tham khảo.',
+      AppLanguage.en: 'Tap the heart ❤️ icon on any service card to save it for later reference.',
+    },
+    'favorites_explore_btn': {
+      AppLanguage.vi: 'Khám phá dịch vụ ngay',
+      AppLanguage.en: 'Explore Services Now',
+    },
+    'btn_cancel': {
+      AppLanguage.vi: 'Hủy',
+      AppLanguage.en: 'Cancel',
+    },
   };
 
   static String translate(String key, AppLanguage language) {

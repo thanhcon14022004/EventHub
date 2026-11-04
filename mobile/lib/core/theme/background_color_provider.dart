@@ -3,10 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 enum AppBgColor {
-  white, // Trắng (Mặc định)
-  gray,  // Xám
-  blue,  // Xanh dương
-  green, // Xanh lá
   white,  // Trắng (Mặc định)
   gray,   // Xám
   blue,   // Xanh dương
@@ -20,7 +16,6 @@ extension AppBgColorExt on AppBgColor {
     switch (this) {
       case AppBgColor.white:
         return 'Trắng (Mặc định)';
-        return 'Trắng';
       case AppBgColor.gray:
         return 'Xám';
       case AppBgColor.blue:
@@ -38,7 +33,6 @@ extension AppBgColorExt on AppBgColor {
     switch (this) {
       case AppBgColor.white:
         return 'White (Default)';
-        return 'White';
       case AppBgColor.gray:
         return 'Gray';
       case AppBgColor.blue:
@@ -56,7 +50,6 @@ extension AppBgColorExt on AppBgColor {
     switch (this) {
       case AppBgColor.white:
         return 'Nền trắng nguyên bản, sáng rõ tiêu chuẩn';
-        return 'Nền trắng nguyên bản tiêu chuẩn';
       case AppBgColor.gray:
         return 'Nền xám dịu mắt, sang trọng';
       case AppBgColor.blue:
@@ -74,16 +67,12 @@ extension AppBgColorExt on AppBgColor {
     switch (this) {
       case AppBgColor.white:
         return 'Original crisp white, clean standard';
-        return 'Original crisp white standard';
       case AppBgColor.gray:
         return 'Soft eye-friendly modern gray';
-        return 'Soft modern neutral gray';
       case AppBgColor.blue:
         return 'Serene pastel blue, elegant look';
-        return 'Serene pastel sky blue';
       case AppBgColor.green:
         return 'Refreshing nature-inspired pastel green';
-        return 'Refreshing nature mint green';
       case AppBgColor.red:
         return 'Warm soft pastel rose red';
       case AppBgColor.yellow:
@@ -171,4 +160,3 @@ class AppBgColorNotifier extends StateNotifier<AppBgColor> {
 final appBgColorProvider = StateNotifierProvider<AppBgColorNotifier, AppBgColor>((ref) {
   return AppBgColorNotifier();
 });
-

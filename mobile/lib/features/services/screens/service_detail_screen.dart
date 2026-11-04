@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../shared/widgets/event_countdown_timer.dart';
 import '../../../shared/widgets/event_network_image.dart';
+import '../../favorites/providers/favorites_provider.dart';
 import '../../auth/providers/auth_provider.dart';
 import '../../bookings/models/booking_model.dart';
 import '../models/product_model.dart';
@@ -75,6 +76,11 @@ class _ServiceDetailScreenState extends ConsumerState<ServiceDetailScreen> {
   @override
   Widget build(BuildContext context) {
     final product = ref.watch(productApprovalProvider).resolveServiceById(widget.serviceId);
+    final favIds = ref.watch(favoritesProvider);
+    final isFav = favIds.contains(widget.serviceId) ||
+        favIds.contains(product.id) ||
+        (widget.serviceId == 's1' && favIds.contains('ps1')) ||
+        (widget.serviceId == 'ps1' && favIds.contains('s1'));
     final packages = _buildPackages(product);
     final safeIndex = _selectedPackageIndex.clamp(0, packages.length - 1);
     final selectedPkg = packages[safeIndex];
@@ -99,8 +105,24 @@ class _ServiceDetailScreenState extends ConsumerState<ServiceDetailScreen> {
               CircleAvatar(
                 backgroundColor: Colors.white.withOpacity(0.9),
                 child: IconButton(
-                  icon: const Icon(Icons.favorite_border, color: AppColors.primary),
-                  onPressed: () {},
+                  icon: Icon(
+                    isFav ? Icons.favorite_rounded : Icons.favorite_border_rounded,
+                    color: isFav ? const Color(0xFFEF4444) : AppColors.primary,
+                  ),
+                  onPressed: () {
+                    final nowFav = ref.read(favoritesProvider.notifier).toggleFavorite(widget.serviceId);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          nowFav
+                              ? 'Đã thêm "${product.title}" vào danh sách yêu thích ❤️'
+                              : 'Đã bỏ yêu thích "${product.title}"',
+                        ),
+                        behavior: SnackBarBehavior.floating,
+                        duration: const Duration(seconds: 2),
+                      ),
+                    );
+                  },
                 ),
               ),
               const SizedBox(width: 8),

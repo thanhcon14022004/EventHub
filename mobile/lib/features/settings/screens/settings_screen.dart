@@ -157,27 +157,6 @@ class SettingsScreen extends ConsumerWidget {
             ),
             const SizedBox(height: 12),
 
-            // 4 Color Selection Grid (Trắng, Xám, Xanh dương, Xanh lá)
-            GridView.count(
-              crossAxisCount: 2,
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              mainAxisSpacing: 12,
-              crossAxisSpacing: 12,
-              childAspectRatio: 1.5,
-              children: [
-                _buildColorCard(
-                  context: context,
-                  colorOption: AppBgColor.white,
-                  isSelected: bgColor == AppBgColor.white && !isDark,
-                  isDark: isDark,
-                  lang: lang,
-                  onTap: () {
-                    if (isDark) {
-                      ref.read(themeModeProvider.notifier).setThemeMode(ThemeMode.light);
-                    }
-                    ref.read(appBgColorProvider.notifier).setBgColor(AppBgColor.white);
-                  },
             // Các ô tròn nhỏ chọn màu (Trắng, Xám, Xanh dương, Xanh lá, Đỏ, Vàng)
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 14),
@@ -187,46 +166,6 @@ class SettingsScreen extends ConsumerWidget {
                 border: Border.all(
                   color: isDark ? const Color(0xFF334155) : const Color(0xFFE2E8F0),
                 ),
-                _buildColorCard(
-                  context: context,
-                  colorOption: AppBgColor.gray,
-                  isSelected: bgColor == AppBgColor.gray && !isDark,
-                  isDark: isDark,
-                  lang: lang,
-                  onTap: () {
-                    if (isDark) {
-                      ref.read(themeModeProvider.notifier).setThemeMode(ThemeMode.light);
-                    }
-                    ref.read(appBgColorProvider.notifier).setBgColor(AppBgColor.gray);
-                  },
-                ),
-                _buildColorCard(
-                  context: context,
-                  colorOption: AppBgColor.blue,
-                  isSelected: bgColor == AppBgColor.blue && !isDark,
-                  isDark: isDark,
-                  lang: lang,
-                  onTap: () {
-                    if (isDark) {
-                      ref.read(themeModeProvider.notifier).setThemeMode(ThemeMode.light);
-                    }
-                    ref.read(appBgColorProvider.notifier).setBgColor(AppBgColor.blue);
-                  },
-                ),
-                _buildColorCard(
-                  context: context,
-                  colorOption: AppBgColor.green,
-                  isSelected: bgColor == AppBgColor.green && !isDark,
-                  isDark: isDark,
-                  lang: lang,
-                  onTap: () {
-                    if (isDark) {
-                      ref.read(themeModeProvider.notifier).setThemeMode(ThemeMode.light);
-                    }
-                    ref.read(appBgColorProvider.notifier).setBgColor(AppBgColor.green);
-                  },
-                ),
-              ],
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.04),
@@ -564,7 +503,6 @@ class SettingsScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildColorCard({
   Widget _buildColorCircleItem({
     required BuildContext context,
     required AppBgColor colorOption,
@@ -578,46 +516,12 @@ class SettingsScreen extends ConsumerWidget {
 
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(16),
-      child: Container(
-        padding: const EdgeInsets.all(12),
-        decoration: BoxDecoration(
-          color: colorOption.color,
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(
-            color: isSelected ? const Color(0xFF4F46E5) : const Color(0xFFCBD5E1),
-            width: isSelected ? 2.5 : 1.2,
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: isSelected
-                  ? const Color(0xFF4F46E5).withOpacity(0.2)
-                  : Colors.black.withOpacity(0.04),
-              blurRadius: isSelected ? 8 : 4,
-              offset: const Offset(0, 2),
-            ),
-          ],
-        ),
       borderRadius: BorderRadius.circular(20),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                // Color circle swatch preview
-                Container(
-                  width: 26,
-                  height: 26,
-                  decoration: BoxDecoration(
-                    color: colorOption.previewColor,
-                    shape: BoxShape.circle,
-                    border: Border.all(color: const Color(0xFF94A3B8), width: 1.5),
-                  ),
             // Ô tròn nhỏ chọn màu
             Container(
               width: 44,
@@ -631,15 +535,6 @@ class SettingsScreen extends ConsumerWidget {
                       : (isWhite ? const Color(0xFFCBD5E1) : Colors.transparent),
                   width: isSelected ? 3.0 : (isWhite ? 1.5 : 0),
                 ),
-                // Selected indicator badge
-                if (isSelected)
-                  Container(
-                    padding: const EdgeInsets.all(3),
-                    decoration: const BoxDecoration(
-                      color: Color(0xFF4F46E5),
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Icon(Icons.check, size: 12, color: Colors.white),
                 boxShadow: [
                   BoxShadow(
                     color: isSelected
@@ -648,7 +543,6 @@ class SettingsScreen extends ConsumerWidget {
                     blurRadius: isSelected ? 8 : 4,
                     offset: const Offset(0, 2),
                   ),
-              ],
                 ],
               ),
               child: isSelected
@@ -661,27 +555,6 @@ class SettingsScreen extends ConsumerWidget {
                     )
                   : null,
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w800,
-                    color: Color(0xFF1E293B),
-                  ),
-                ),
-                const SizedBox(height: 2),
-                Text(
-                  colorOption == AppBgColor.white ? 'Mặc định' : 'Màu nền',
-                  style: const TextStyle(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w600,
-                    color: Color(0xFF64748B),
-                  ),
-                ),
-              ],
             const SizedBox(height: 6),
             Text(
               title,

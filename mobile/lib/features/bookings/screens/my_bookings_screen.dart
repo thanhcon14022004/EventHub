@@ -1136,52 +1136,60 @@ class _MyBookingsScreenState extends ConsumerState<MyBookingsScreen> with Single
                 Padding(
                   padding: const EdgeInsets.fromLTRB(14, 0, 14, 10),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      EventCountdownTimer(
-                        targetDate: DateTime.now().add(const Duration(days: 4, hours: 14, minutes: 20)),
-                        compact: true,
+                      Flexible(
+                        child: EventCountdownTimer(
+                          targetDate: DateTime.now().add(const Duration(days: 4, hours: 14, minutes: 20)),
+                          compact: true,
+                        ),
                       ),
-                      const Spacer(),
-                      InkWell(
-                        onTap: () async {
-                          final ok = await CalendarService.addEventToCalendar(
-                            title: 'Sự kiện EventHub: ${booking.serviceTitle}',
-                            description: 'Mã đơn: ${booking.code}\nĐịa điểm: ${booking.location}\nNhà cung cấp: ${booking.providerName}',
-                            location: booking.location,
-                          );
-                          if (context.mounted) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Row(
-                                  children: [
-                                    const Icon(Icons.event_available_rounded, color: Colors.white, size: 20),
-                                    const SizedBox(width: 8),
-                                    Expanded(
-                                      child: Text(ok ? 'Đang mở Google Calendar để lưu "${booking.serviceTitle}"...' : 'Không thể mở lịch'),
-                                    ),
-                                  ],
-                                ),
-                                backgroundColor: ok ? AppColors.success : AppColors.error,
-                                behavior: SnackBarBehavior.floating,
-                              ),
+                      const SizedBox(width: 8),
+                      Flexible(
+                        child: InkWell(
+                          onTap: () async {
+                            final ok = await CalendarService.addEventToCalendar(
+                              title: 'Sự kiện EventHub: ${booking.serviceTitle}',
+                              description: 'Mã đơn: ${booking.code}\nĐịa điểm: ${booking.location}\nNhà cung cấp: ${booking.providerName}',
+                              location: booking.location,
                             );
-                          }
-                        },
-                        borderRadius: BorderRadius.circular(8),
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                          decoration: BoxDecoration(
-                            color: const Color(0xFFF0F9FF),
-                            borderRadius: BorderRadius.circular(8),
-                            border: Border.all(color: const Color(0xFF38BDF8), width: 1.2),
-                          ),
-                          child: const Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Icon(Icons.calendar_month_rounded, size: 14, color: Color(0xFF0284C7)),
-                              SizedBox(width: 4),
-                              Text('Thêm vào Lịch 📅', style: TextStyle(color: Color(0xFF0284C7), fontSize: 11.5, fontWeight: FontWeight.w800)),
-                            ],
+                            if (context.mounted) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Row(
+                                    children: [
+                                      const Icon(Icons.event_available_rounded, color: Colors.white, size: 20),
+                                      const SizedBox(width: 8),
+                                      Expanded(
+                                        child: Text(ok ? 'Đang mở Google Calendar để lưu "${booking.serviceTitle}"...' : 'Không thể mở lịch'),
+                                      ),
+                                    ],
+                                  ),
+                                  backgroundColor: ok ? AppColors.success : AppColors.error,
+                                  behavior: SnackBarBehavior.floating,
+                                ),
+                              );
+                            }
+                          },
+                          borderRadius: BorderRadius.circular(8),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFFF0F9FF),
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(color: const Color(0xFF38BDF8), width: 1.2),
+                            ),
+                            child: const FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Icon(Icons.calendar_month_rounded, size: 14, color: Color(0xFF0284C7)),
+                                  SizedBox(width: 4),
+                                  Text('Thêm vào Lịch 📅', style: TextStyle(color: Color(0xFF0284C7), fontSize: 11, fontWeight: FontWeight.w800)),
+                                ],
+                              ),
+                            ),
                           ),
                         ),
                       ),

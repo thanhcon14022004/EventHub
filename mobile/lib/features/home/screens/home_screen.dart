@@ -11,6 +11,7 @@ import '../../auth/providers/auth_provider.dart';
 import '../../bookings/models/booking_model.dart';
 import '../../notifications/providers/notification_provider.dart';
 import '../../notifications/widgets/notification_dropdown.dart';
+import '../../favorites/providers/favorites_provider.dart';
 import '../../services/providers/product_approval_provider.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
@@ -945,6 +946,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     separatorBuilder: (_, __) => const SizedBox(width: 14),
                     itemBuilder: (context, index) {
                       final item = trendingItems[index];
+                      final itemId = item['id'] as String;
+                      final isFav = ref.watch(favoritesProvider).contains(itemId);
                       return GestureDetector(
                         onTap: () => context.push('/services/${item['id']}'),
                         child: Container(
@@ -999,19 +1002,40 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                   Positioned(
                                     top: 10,
                                     right: 10,
-                                    child: Container(
-                                      padding: const EdgeInsets.all(6),
-                                      decoration: BoxDecoration(
-                                        color: Colors.white.withOpacity(0.9),
-                                        shape: BoxShape.circle,
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: Colors.black.withOpacity(0.1),
-                                            blurRadius: 6,
+                                    child: InkWell(
+                                      onTap: () {
+                                        final nowFav = ref.read(favoritesProvider.notifier).toggleFavorite(itemId);
+                                        ScaffoldMessenger.of(context).showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              nowFav
+                                                  ? 'Đã thêm "${item['title']}" vào yêu thích ❤️'
+                                                  : 'Đã bỏ yêu thích "${item['title']}"',
+                                            ),
+                                            behavior: SnackBarBehavior.floating,
+                                            duration: const Duration(seconds: 2),
                                           ),
-                                        ],
+                                        );
+                                      },
+                                      borderRadius: BorderRadius.circular(20),
+                                      child: Container(
+                                        padding: const EdgeInsets.all(6),
+                                        decoration: BoxDecoration(
+                                          color: Colors.white.withOpacity(0.9),
+                                          shape: BoxShape.circle,
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Colors.black.withOpacity(0.1),
+                                              blurRadius: 6,
+                                            ),
+                                          ],
+                                        ),
+                                        child: Icon(
+                                          isFav ? Icons.favorite_rounded : Icons.favorite_border_rounded,
+                                          size: 16,
+                                          color: isFav ? const Color(0xFFEF4444) : AppColors.primary,
+                                        ),
                                       ),
-                                      child: const Icon(Icons.favorite_border_rounded, size: 16, color: AppColors.primary),
                                     ),
                                   ),
                                 ],

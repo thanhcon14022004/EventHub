@@ -30,6 +30,7 @@ import '../../features/provider/screens/provider_dashboard_screen.dart';
 import '../../features/provider/screens/provider_services_screen.dart';
 import '../../features/services/screens/service_detail_screen.dart';
 import '../../features/services/screens/service_list_screen.dart';
+import '../../features/favorites/screens/favorites_screen.dart';
 import '../../features/settings/screens/settings_screen.dart';
 import '../../shared/widgets/main_scaffold_shell.dart';
 import '../../shared/widgets/provider_scaffold_shell.dart';
@@ -359,6 +360,11 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/notifications',
         parentNavigatorKey: _rootNavigatorKey,
         builder: (context, state) => const NotificationsScreen(),
+      ),
+      GoRoute(
+        path: '/favorites',
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) => const FavoritesScreen(),
       ),
     ],
   );

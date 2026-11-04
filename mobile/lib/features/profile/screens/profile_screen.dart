@@ -10,6 +10,7 @@ import '../../admin/providers/admin_provider.dart';
 import '../../auth/models/user_model.dart';
 import '../../auth/providers/auth_provider.dart';
 import '../../bookings/providers/booking_provider.dart';
+import '../../favorites/providers/favorites_provider.dart';
 import '../../notifications/widgets/notification_dropdown.dart';
 
 class ProfileScreen extends ConsumerWidget {
@@ -23,6 +24,7 @@ class ProfileScreen extends ConsumerWidget {
     final isProvider = authState.isProvider;
     final isCustomer = authState.isAuthenticated && !isProvider && !isAdmin;
     final bookingCount = ref.watch(bookingProvider).length;
+    final favoritesCount = ref.watch(favoritesProvider).length;
     final adminState = ref.watch(adminProvider);
     final lang = ref.watch(appLocaleProvider);
     String t(String key) => AppTranslations.translate(key, lang);
@@ -198,7 +200,7 @@ class ProfileScreen extends ConsumerWidget {
                                       () => context.go(isAdmin ? '/admin' : (isProvider ? '/provider/bookings' : '/bookings')),
                                     ),
                                     _buildStatDivider(),
-                                    _buildStatItem('12', 'Yêu thích', () {}),
+                                    _buildStatItem('$favoritesCount', 'Yêu thích', () => context.push('/favorites')),
                                     _buildStatDivider(),
                                     _buildStatItem('5.0', 'Đánh giá', () {}),
                                     _buildStatDivider(),
@@ -513,6 +515,13 @@ class ProfileScreen extends ConsumerWidget {
                     title: 'Bảo mật & Mật khẩu',
                     subtitle: 'Quản lý mật khẩu và phiên đăng nhập',
                     onTap: () {},
+                  ),
+                  const Divider(height: 1, indent: 56, endIndent: 16),
+                  _buildMenuItem(
+                    icon: Icons.favorite_rounded,
+                    title: 'Dịch vụ đã lưu / Yêu thích',
+                    subtitle: '$favoritesCount dịch vụ đang quan tâm',
+                    onTap: () => context.push('/favorites'),
                   ),
                   const Divider(height: 1, indent: 56, endIndent: 16),
                   _buildMenuItem(

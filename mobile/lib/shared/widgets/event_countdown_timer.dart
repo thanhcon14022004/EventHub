@@ -63,40 +63,46 @@ class _EventCountdownTimerState extends State<EventCountdownTimer> {
     if (widget.compact) {
       if (isExpired) {
         return Container(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
           decoration: BoxDecoration(
             color: const Color(0xFF10B981).withOpacity(0.15),
             borderRadius: BorderRadius.circular(8),
           ),
-          child: const Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(Icons.bolt_rounded, size: 14, color: Color(0xFF10B981)),
-              SizedBox(width: 4),
-              Text(
-                'Đang diễn ra',
-                style: TextStyle(color: Color(0xFF10B981), fontWeight: FontWeight.w700, fontSize: 11),
-              ),
-            ],
+          child: const FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(Icons.bolt_rounded, size: 14, color: Color(0xFF10B981)),
+                SizedBox(width: 4),
+                Text(
+                  'Đang diễn ra',
+                  style: TextStyle(color: Color(0xFF10B981), fontWeight: FontWeight.w700, fontSize: 11),
+                ),
+              ],
+            ),
           ),
         );
       }
       return Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
         decoration: BoxDecoration(
           color: const Color(0xFF4F46E5).withOpacity(0.12),
           borderRadius: BorderRadius.circular(8),
         ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Icon(Icons.timer_outlined, size: 14, color: AppColors.primary),
-            const SizedBox(width: 4),
-            Text(
-              '${days}d ${hours.toString().padLeft(2, '0')}:${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}',
-              style: const TextStyle(color: AppColors.primary, fontWeight: FontWeight.w800, fontSize: 11),
-            ),
-          ],
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Icon(Icons.timer_outlined, size: 14, color: AppColors.primary),
+              const SizedBox(width: 4),
+              Text(
+                '${days}d ${hours.toString().padLeft(2, '0')}:${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}',
+                style: const TextStyle(color: AppColors.primary, fontWeight: FontWeight.w800, fontSize: 11),
+              ),
+            ],
+          ),
         ),
       );
     }
@@ -143,17 +149,21 @@ class _EventCountdownTimerState extends State<EventCountdownTimer> {
                 ),
               ),
               const SizedBox(width: 8),
-              Text(
-                widget.eventName != null
-                    ? 'Đếm ngược: ${widget.eventName}'
-                    : 'Đếm ngược đến giờ khai mạc sự kiện',
-                style: TextStyle(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w800,
-                  color: isDark ? Colors.white : AppColors.textPrimary,
+              Expanded(
+                child: Text(
+                  widget.eventName != null
+                      ? 'Đếm ngược: ${widget.eventName}'
+                      : 'Đếm ngược đến giờ khai mạc sự kiện',
+                  style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w800,
+                    color: isDark ? Colors.white : AppColors.textPrimary,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
-              const Spacer(),
+              const SizedBox(width: 8),
               if (!isExpired)
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
@@ -261,4 +271,3 @@ class _EventCountdownTimerState extends State<EventCountdownTimer> {
     );
   }
 }
-
