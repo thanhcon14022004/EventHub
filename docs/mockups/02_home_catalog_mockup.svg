@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 844" width="390" height="844">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.08" />
+    </filter>
+  </defs>
+
+  <!-- Device Frame Background -->
+  <rect width="390" height="844" rx="44" fill="#F8FAFC" />
+
+  <!-- Dynamic Island & Status Bar -->
+  <rect x="135" y="14" width="120" height="28" rx="14" fill="#000000" />
+  <text x="32" y="38" fill="#1E293B" font-family="-apple-system, sans-serif" font-size="14" font-weight="600">9:41</text>
+  <rect x="340" y="28" width="18" height="10" rx="3" fill="none" stroke="#1E293B" stroke-width="2" />
+  <rect x="342" y="30" width="12" height="6" rx="1.5" fill="#1E293B" />
+
+  <!-- App Header -->
+  <g transform="translate(20, 60)">
+    <circle cx="22" cy="22" r="22" fill="#EEF2FF" />
+    <text x="22" y="27" fill="#4F46E5" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle">TC</text>
+    
+    <text x="56" y="18" fill="#64748B" font-family="sans-serif" font-size="12">Vị trí hiện tại</text>
+    <text x="56" y="36" fill="#1E293B" font-family="sans-serif" font-size="15" font-weight="700">Hà Nội, Việt Nam ▾</text>
+
+    <!-- Notification Bell -->
+    <circle cx="328" cy="22" r="20" fill="#FFFFFF" filter="url(#shadow)" />
+    <text x="328" y="27" font-size="16" text-anchor="middle">🔔</text>
+    <circle cx="338" cy="12" r="4" fill="#EF4444" />
+  </g>
+
+  <!-- Search Bar -->
+  <g transform="translate(20, 120)" filter="url(#shadow)">
+    <rect width="350" height="50" rx="16" fill="#FFFFFF" />
+    <text x="20" y="31" fill="#94A3B8" font-size="16">🔍</text>
+    <text x="48" y="31" fill="#94A3B8" font-family="sans-serif" font-size="14">Tìm kiếm tiệc cưới, sinh nhật, hội nghị...</text>
+  </g>
+
+  <!-- Categories Horizontal Scroll -->
+  <g transform="translate(20, 190)">
+    <text x="0" y="0" fill="#1E293B" font-family="sans-serif" font-size="17" font-weight="700">Danh mục sự kiện</text>
+    
+    <!-- Chip 1 (Active) -->
+    <rect x="0" y="14" width="95" height="36" rx="18" fill="#4F46E5" />
+    <text x="47" y="37" fill="#FFFFFF" font-family="sans-serif" font-size="13" font-weight="600" text-anchor="middle">✨ Tất cả</text>
+
+    <!-- Chip 2 -->
+    <rect x="105" y="14" width="115" height="36" rx="18" fill="#FFFFFF" stroke="#E2E8F0" />
+    <text x="162" y="37" fill="#475569" font-family="sans-serif" font-size="13" font-weight="500" text-anchor="middle">🌸 Tiệc cưới</text>
+
+    <!-- Chip 3 -->
+    <rect x="230" y="14" width="115" height="36" rx="18" fill="#FFFFFF" stroke="#E2E8F0" />
+    <text x="287" y="37" fill="#475569" font-family="sans-serif" font-size="13" font-weight="500" text-anchor="middle">🎂 Sinh nhật</text>
+  </g>
+
+  <!-- Trending Section Header -->
+  <g transform="translate(20, 265)">
+    <text x="0" y="0" fill="#1E293B" font-family="sans-serif" font-size="17" font-weight="700">Dịch vụ nổi bật 🔥</text>
+    <text x="350" y="0" fill="#4F46E5" font-family="sans-serif" font-size="13" font-weight="600" text-anchor="end">Xem tất cả</text>
+  </g>
+
+  <!-- Service Card 1 -->
+  <g transform="translate(20, 285)" filter="url(#shadow)">
+    <rect width="350" height="210" rx="20" fill="#FFFFFF" />
+    <!-- Image banner placeholder -->
+    <rect width="350" height="125" rx="20" fill="#E0E7FF" />
+    <rect y="110" width="350" height="15" fill="#E0E7FF" />
+    <text x="175" y="70" fill="#6366F1" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle">Trang Trí Tiệc Cưới Luxury</text>
+
+    <!-- Favorite Heart Toggle -->
+    <circle cx="320" cy="30" r="16" fill="#FFFFFF" opacity="0.9" />
+    <text x="320" y="35" fill="#EF4444" font-size="14" text-anchor="middle">❤️</text>
+
+    <!-- Rating badge -->
+    <rect x="14" y="90" width="60" height="24" rx="12" fill="#1E293B" opacity="0.8" />
+    <text x="44" y="106" fill="#FBBF24" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle">⭐ 4.9 (128)</text>
+
+    <!-- Title and price -->
+    <text x="16" y="152" fill="#1E293B" font-family="sans-serif" font-size="16" font-weight="700">Trọn Gói Tiệc Cưới Phong Cách Hoàng Gia</text>
+    <text x="16" y="174" fill="#64748B" font-family="sans-serif" font-size="13">Royal Wedding Design • Hà Nội</text>
+    <text x="16" y="196" fill="#4F46E5" font-family="sans-serif" font-size="16" font-weight="800">18.500.000 ₫</text>
+    
+    <rect x="250" y="174" width="86" height="28" rx="8" fill="#EEF2FF" />
+    <text x="293" y="193" fill="#4F46E5" font-family="sans-serif" font-size="12" font-weight="700" text-anchor="middle">Đặt ngay</text>
+  </g>
+
+  <!-- Service Card 2 (Partially visible) -->
+  <g transform="translate(20, 510)" filter="url(#shadow)">
+    <rect width="350" height="210" rx="20" fill="#FFFFFF" />
+    <rect width="350" height="125" rx="20" fill="#FEF3C7" />
+    <rect y="110" width="350" height="15" fill="#FEF3C7" />
+    <text x="175" y="70" fill="#D97706" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle">Âm Thanh Ánh Sáng Sự Kiện Gala</text>
+    
+    <circle cx="320" cy="30" r="16" fill="#FFFFFF" opacity="0.9" />
+    <text x="320" y="35" fill="#94A3B8" font-size="14" text-anchor="middle">🤍</text>
+
+    <text x="16" y="152" fill="#1E293B" font-family="sans-serif" font-size="16" font-weight="700">Dàn Âm Thanh Ánh Sáng Chuyên Nghiệp</text>
+    <text x="16" y="174" fill="#64748B" font-family="sans-serif" font-size="13">SoundPro Master • Toàn Quốc</text>
+    <text x="16" y="196" fill="#4F46E5" font-family="sans-serif" font-size="16" font-weight="800">9.200.000 ₫</text>
+  </g>
+
+  <!-- Bottom Navigation Bar -->
+  <g transform="translate(0, 755)" filter="url(#shadow)">
+    <rect width="390" height="89" fill="#FFFFFF" />
+    
+    <!-- Tab 1: Home (Active) -->
+    <g transform="translate(42, 12)">
+      <text x="0" y="16" fill="#4F46E5" font-size="20">🏠</text>
+      <text x="-4" y="34" fill="#4F46E5" font-family="sans-serif" font-size="11" font-weight="700">Trang chủ</text>
+    </g>
+
+    <!-- Tab 2: Bookings -->
+    <g transform="translate(122, 12)">
+      <text x="0" y="16" fill="#94A3B8" font-size="20">📅</text>
+      <text x="-8" y="34" fill="#64748B" font-family="sans-serif" font-size="11">Đơn đặt</text>
+    </g>
+
+    <!-- Tab 3: Favorites -->
+    <g transform="translate(202, 12)">
+      <text x="0" y="16" fill="#94A3B8" font-size="20">❤️</text>
+      <text x="-6" y="34" fill="#64748B" font-family="sans-serif" font-size="11">Yêu thích</text>
+    </g>
+
+    <!-- Tab 4: Messages -->
+    <g transform="translate(275, 12)">
+      <text x="0" y="16" fill="#94A3B8" font-size="20">💬</text>
+      <text x="-4" y="34" fill="#64748B" font-family="sans-serif" font-size="11">Tin nhắn</text>
+    </g>
+
+    <!-- Tab 5: Profile -->
+    <g transform="translate(340, 12)">
+      <text x="0" y="16" fill="#94A3B8" font-size="20">👤</text>
+      <text x="-6" y="34" fill="#64748B" font-family="sans-serif" font-size="11">Tài khoản</text>
+    </g>
+  </g>
+
+  <!-- Home Indicator -->
+  <rect x="125" y="828" width="140" height="5" rx="2.5" fill="#1E293B" opacity="0.3" />
+</svg>

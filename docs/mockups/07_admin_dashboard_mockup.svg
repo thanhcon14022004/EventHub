@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="900" height="600">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.08" />
+    </filter>
+  </defs>
+
+  <!-- Admin Desktop / Web Frame -->
+  <rect width="900" height="600" fill="#F8FAFC" />
+
+  <!-- Sidebar -->
+  <rect width="220" height="600" fill="#0F172A" />
+  <text x="24" y="44" fill="#FFFFFF" font-family="sans-serif" font-size="20" font-weight="800">EventHub Admin</text>
+  <text x="24" y="66" fill="#64748B" font-family="sans-serif" font-size="12">Cổng Quản Trị Hệ Thống</text>
+
+  <!-- Sidebar Menu Items -->
+  <g transform="translate(16, 110)">
+    <!-- Item 1: Thống kê tổng quan -->
+    <rect x="0" y="0" width="188" height="40" rx="8" fill="#1E293B" />
+    <text x="14" y="25" fill="#94A3B8" font-size="16">📊</text>
+    <text x="42" y="25" fill="#CBD5E1" font-family="sans-serif" font-size="13">Tổng quan KPI</text>
+
+    <!-- Item 2: Quản lý người dùng (Active) -->
+    <rect x="0" y="48" width="188" height="40" rx="8" fill="#4F46E5" />
+    <text x="14" y="73" fill="#FFFFFF" font-size="16">👥</text>
+    <text x="42" y="73" fill="#FFFFFF" font-family="sans-serif" font-size="13" font-weight="700">Người dùng</text>
+
+    <!-- Item 3: Duyệt nhà cung cấp -->
+    <rect x="0" y="96" width="188" height="40" rx="8" fill="none" />
+    <text x="14" y="121" fill="#94A3B8" font-size="16">🏢</text>
+    <text x="42" y="121" fill="#94A3B8" font-family="sans-serif" font-size="13">Duyệt đối tác</text>
+
+    <!-- Item 4: Quản lý đơn & Doanh thu -->
+    <rect x="0" y="144" width="188" height="40" rx="8" fill="none" />
+    <text x="14" y="169" fill="#94A3B8" font-size="16">💰</text>
+    <text x="42" y="169" fill="#94A3B8" font-family="sans-serif" font-size="13">Thanh toán &amp; Đối soát</text>
+  </g>
+
+  <!-- Main Content Header -->
+  <g transform="translate(250, 30)">
+    <text x="0" y="24" fill="#1E293B" font-family="sans-serif" font-size="22" font-weight="800">Quản lý Tài khoản &amp; Phân quyền</text>
+    <text x="0" y="46" fill="#64748B" font-family="sans-serif" font-size="13">Khóa hoặc kích hoạt tài khoản khách hàng và đối tác tức thì</text>
+
+    <!-- Search input -->
+    <rect x="390" y="4" width="220" height="38" rx="8" fill="#FFFFFF" stroke="#CBD5E1" />
+    <text x="406" y="28" fill="#94A3B8" font-family="sans-serif" font-size="13">🔍 Tìm tên hoặc email...</text>
+  </g>
+
+  <!-- User Stats Cards -->
+  <g transform="translate(250, 95)">
+    <!-- Card 1 -->
+    <rect x="0" y="0" width="140" height="74" rx="12" fill="#FFFFFF" filter="url(#shadow)" />
+    <text x="16" y="26" fill="#64748B" font-family="sans-serif" font-size="12">Tổng Users</text>
+    <text x="16" y="54" fill="#1E293B" font-family="sans-serif" font-size="22" font-weight="800">1.240</text>
+
+    <!-- Card 2 -->
+    <rect x="156" y="0" width="140" height="74" rx="12" fill="#FFFFFF" filter="url(#shadow)" />
+    <text x="172" y="26" fill="#64748B" font-family="sans-serif" font-size="12">Khách hàng</text>
+    <text x="172" y="54" fill="#4F46E5" font-family="sans-serif" font-size="22" font-weight="800">1.155</text>
+
+    <!-- Card 3 -->
+    <rect x="312" y="0" width="140" height="74" rx="12" fill="#FFFFFF" filter="url(#shadow)" />
+    <text x="328" y="26" fill="#64748B" font-family="sans-serif" font-size="12">Đối tác dịch vụ</text>
+    <text x="328" y="54" fill="#059669" font-family="sans-serif" font-size="22" font-weight="800">82</text>
+
+    <!-- Card 4 -->
+    <rect x="468" y="0" width="140" height="74" rx="12" fill="#FFFFFF" filter="url(#shadow)" />
+    <text x="484" y="26" fill="#64748B" font-family="sans-serif" font-size="12">Quản trị viên</text>
+    <text x="484" y="54" fill="#D97706" font-family="sans-serif" font-size="22" font-weight="800">3</text>
+  </g>
+
+  <!-- Users Table Card -->
+  <g transform="translate(250, 190)" filter="url(#shadow)">
+    <rect width="610" height="380" rx="16" fill="#FFFFFF" />
+
+    <!-- Table Header -->
+    <rect width="610" height="42" rx="16" fill="#F1F5F9" />
+    <rect y="30" width="610" height="12" fill="#F1F5F9" />
+    <text x="24" y="26" fill="#475569" font-family="sans-serif" font-size="12" font-weight="700">HỌ TÊN &amp; EMAIL</text>
+    <text x="230" y="26" fill="#475569" font-family="sans-serif" font-size="12" font-weight="700">VAI TRÒ</text>
+    <text x="350" y="26" fill="#475569" font-family="sans-serif" font-size="12" font-weight="700">TRẠNG THÁI</text>
+    <text x="490" y="26" fill="#475569" font-family="sans-serif" font-size="12" font-weight="700">THAO TÁC KHÓA</text>
+
+    <!-- Row 1: Active Customer -->
+    <g transform="translate(0, 42)">
+      <line x1="0" y1="56" x2="610" y2="56" stroke="#F1F5F9" />
+      <text x="24" y="26" fill="#1E293B" font-family="sans-serif" font-size="13" font-weight="600">Nguyễn Văn An</text>
+      <text x="24" y="44" fill="#64748B" font-family="sans-serif" font-size="11">an.nguyen@gmail.com</text>
+
+      <rect x="230" y="16" width="80" height="24" rx="6" fill="#EEF2FF" />
+      <text x="270" y="32" fill="#4F46E5" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle">Customer</text>
+
+      <text x="350" y="33" fill="#10B981" font-family="sans-serif" font-size="12" font-weight="bold">● Đang hoạt động</text>
+
+      <!-- Toggle Switch: ON -->
+      <rect x="490" y="18" width="46" height="24" rx="12" fill="#10B981" />
+      <circle cx="524" cy="30" r="9" fill="#FFFFFF" />
+      <text x="544" y="34" fill="#64748B" font-family="sans-serif" font-size="11">Mở</text>
+    </g>
+
+    <!-- Row 2: Locked Provider (IsActive = false) -->
+    <g transform="translate(0, 98)">
+      <line x1="0" y1="56" x2="610" y2="56" stroke="#F1F5F9" />
+      <text x="24" y="26" fill="#1E293B" font-family="sans-serif" font-size="13" font-weight="600">Royal Wedding Design</text>
+      <text x="24" y="44" fill="#64748B" font-family="sans-serif" font-size="11">contact@royalwedding.vn</text>
+
+      <rect x="230" y="16" width="80" height="24" rx="6" fill="#ECFDF5" />
+      <text x="270" y="32" fill="#059669" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle">Provider</text>
+
+      <text x="350" y="33" fill="#EF4444" font-family="sans-serif" font-size="12" font-weight="bold">● Đã bị khóa</text>
+
+      <!-- Toggle Switch: OFF -->
+      <rect x="490" y="18" width="46" height="24" rx="12" fill="#CBD5E1" />
+      <circle cx="502" cy="30" r="9" fill="#FFFFFF" />
+      <text x="544" y="34" fill="#EF4444" font-family="sans-serif" font-size="11">Khóa</text>
+    </g>
+
+    <!-- Row 3: Active Admin -->
+    <g transform="translate(0, 154)">
+      <line x1="0" y1="56" x2="610" y2="56" stroke="#F1F5F9" />
+      <text x="24" y="26" fill="#1E293B" font-family="sans-serif" font-size="13" font-weight="600">Hà Trung Thành (Super Admin)</text>
+      <text x="24" y="44" fill="#64748B" font-family="sans-serif" font-size="11">admin@eventhub.vn</text>
+
+      <rect x="230" y="16" width="80" height="24" rx="6" fill="#FEF3C7" />
+      <text x="270" y="32" fill="#D97706" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle">Admin</text>
+
+      <text x="350" y="33" fill="#10B981" font-family="sans-serif" font-size="12" font-weight="bold">● Đang hoạt động</text>
+
+      <rect x="490" y="18" width="46" height="24" rx="12" fill="#10B981" />
+      <circle cx="524" cy="30" r="9" fill="#FFFFFF" />
+      <text x="544" y="34" fill="#64748B" font-family="sans-serif" font-size="11">Mở</text>
+    </g>
+  </g>
+</svg>

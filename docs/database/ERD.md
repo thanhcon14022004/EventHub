@@ -6,7 +6,14 @@ The EventHub database runs on **Microsoft SQL Server** and is managed via **Enti
 
 ---
 
-## 2. Mermaid Entity-Relationship Diagram
+## 2. Visual & Mermaid Entity-Relationship Diagram (ERD)
+
+### 2.1 Sơ đồ Trực Quan Độ Nét Cao (High-Resolution Diagram)
+> **Xem file ảnh gốc trên GitHub**: [`docs/database/ERD_visual.svg`](https://github.com/thanhcon14022004/EventHub/blob/main/docs/database/ERD_visual.svg)
+
+![EventHub Database ERD](https://raw.githubusercontent.com/thanhcon14022004/EventHub/main/docs/database/ERD_visual.svg)
+
+### 2.2 Sơ đồ Mermaid ERD Code
 
 ```mermaid
 erDiagram

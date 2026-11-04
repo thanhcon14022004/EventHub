@@ -1,0 +1,207 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 920" width="100%" height="100%">
+  <defs>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F46E5" />
+      <stop offset="100%" stop-color="#7C3AED" />
+    </linearGradient>
+    <linearGradient id="userGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#334155" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.15" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1400" height="920" fill="#0F172A" />
+
+  <!-- Banner Header -->
+  <rect x="40" y="24" width="1320" height="64" rx="12" fill="url(#headerGrad)" />
+  <text x="70" y="64" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="bold">
+    EventHub — SƠ ĐỒ THIẾT KẾ CƠ SỞ DỮ LIỆU QUAN HỆ (DATABASE ERD)
+  </text>
+  <text x="1080" y="64" fill="#E0E7FF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14">
+    SQL Server • EF Core 8 • PRM-PRJ B12
+  </text>
+
+  <!-- RELATION LINES -->
+  <!-- Users -> ProviderProfiles -->
+  <path d="M 280 200 L 400 200" stroke="#818CF8" stroke-width="2.5" stroke-dasharray="5,5" fill="none" />
+  <!-- Users -> Bookings -->
+  <path d="M 160 380 L 160 520 L 400 520" stroke="#38BDF8" stroke-width="2.5" fill="none" />
+  <!-- ProviderProfile -> Services -->
+  <path d="M 640 220 L 760 220" stroke="#818CF8" stroke-width="2.5" fill="none" />
+  <!-- Category -> Services -->
+  <path d="M 880 110 L 880 160" stroke="#34D399" stroke-width="2.5" fill="none" />
+  <!-- Service -> ServicePackages -->
+  <path d="M 1000 220 L 1120 220" stroke="#F472B6" stroke-width="2.5" fill="none" />
+  <!-- Service -> Bookings -->
+  <path d="M 880 440 L 880 490 L 640 520" stroke="#FBBF24" stroke-width="2" fill="none" />
+  <!-- Bookings -> Payments -->
+  <path d="M 520 740 L 520 790 L 760 790" stroke="#A78BFA" stroke-width="2.5" fill="none" />
+  <!-- Bookings -> Reviews -->
+  <path d="M 640 640 L 880 640 L 880 700" stroke="#F43F5E" stroke-width="2.5" fill="none" />
+
+  <!-- 1. TABLE: ApplicationUser -->
+  <g transform="translate(40, 120)" filter="url(#shadow)">
+    <rect width="240" height="260" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+    <rect width="240" height="38" rx="8" fill="#4338CA" />
+    <rect y="30" width="240" height="8" fill="#4338CA" />
+    <text x="16" y="25" fill="#FFFFFF" font-family="monospace" font-size="14" font-weight="bold">ApplicationUsers</text>
+    <g fill="#CBD5E1" font-family="monospace" font-size="12" transform="translate(16, 60)">
+      <text y="0"><tspan fill="#F43F5E" font-weight="bold">PK</tspan> Id : Guid</text>
+      <text y="22">FullName : nvarchar(255)</text>
+      <text y="44">Email : nvarchar(255)</text>
+      <text y="66">Password : nvarchar(255)</text>
+      <text y="88">PhoneNumber : nvarchar(50)</text>
+      <text y="110">AvatarUrl : nvarchar(500)</text>
+      <text y="132">UserRole : nvarchar(50)</text>
+      <text y="154">IsActive : bit</text>
+      <text y="176">CreatedAt : datetime2</text>
+      <text y="198">UpdatedAt : datetime2</text>
+    </g>
+  </g>
+
+  <!-- 2. TABLE: ProviderProfile -->
+  <g transform="translate(400, 120)" filter="url(#shadow)">
+    <rect width="240" height="260" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+    <rect width="240" height="38" rx="8" fill="#6366F1" />
+    <rect y="30" width="240" height="8" fill="#6366F1" />
+    <text x="16" y="25" fill="#FFFFFF" font-family="monospace" font-size="14" font-weight="bold">ProviderProfiles</text>
+    <g fill="#CBD5E1" font-family="monospace" font-size="12" transform="translate(16, 60)">
+      <text y="0"><tspan fill="#F43F5E" font-weight="bold">PK</tspan> Id : Guid</text>
+      <text y="22"><tspan fill="#38BDF8" font-weight="bold">FK</tspan> UserId : Guid</text>
+      <text y="44">BusinessName : nvarchar(255)</text>
+      <text y="66">Bio : nvarchar(1000)</text>
+      <text y="88">Address : nvarchar(255)</text>
+      <text y="110">City : nvarchar(100)</text>
+      <text y="132">ApprovalStatus : nvarchar(50)</text>
+      <text y="154">RatingAverage : decimal(3,2)</text>
+      <text y="176">TotalReviews : int</text>
+      <text y="198">UpdatedAt : datetime2</text>
+    </g>
+  </g>
+
+  <!-- 3. TABLE: Category -->
+  <g transform="translate(760, 100)" filter="url(#shadow)">
+    <rect width="240" height="150" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+    <rect width="240" height="34" rx="8" fill="#059669" />
+    <rect y="26" width="240" height="8" fill="#059669" />
+    <text x="16" y="22" fill="#FFFFFF" font-family="monospace" font-size="13" font-weight="bold">Categories</text>
+    <g fill="#CBD5E1" font-family="monospace" font-size="12" transform="translate(16, 54)">
+      <text y="0"><tspan fill="#F43F5E" font-weight="bold">PK</tspan> Id : Guid</text>
+      <text y="20">Name : nvarchar(100)</text>
+      <text y="40">Slug : nvarchar(100)</text>
+      <text y="60">IconUrl : nvarchar(255)</text>
+      <text y="80">IsActive : bit</text>
+    </g>
+  </g>
+
+  <!-- 4. TABLE: Services -->
+  <g transform="translate(760, 280)" filter="url(#shadow)">
+    <rect width="240" height="270" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+    <rect width="240" height="38" rx="8" fill="#D97706" />
+    <rect y="30" width="240" height="8" fill="#D97706" />
+    <text x="16" y="25" fill="#FFFFFF" font-family="monospace" font-size="14" font-weight="bold">Services</text>
+    <g fill="#CBD5E1" font-family="monospace" font-size="12" transform="translate(16, 60)">
+      <text y="0"><tspan fill="#F43F5E" font-weight="bold">PK</tspan> Id : Guid</text>
+      <text y="22"><tspan fill="#38BDF8" font-weight="bold">FK</tspan> ProviderId : Guid</text>
+      <text y="44"><tspan fill="#38BDF8" font-weight="bold">FK</tspan> CategoryId : Guid</text>
+      <text y="66">Title : nvarchar(255)</text>
+      <text y="88">Description : nvarchar(max)</text>
+      <text y="110">City : nvarchar(100)</text>
+      <text y="132">BasePrice : decimal(18,2)</text>
+      <text y="154">ApprovalStatus : nvarchar(50)</text>
+      <text y="176">RatingAverage : decimal(3,2)</text>
+      <text y="198">TotalReviews : int</text>
+    </g>
+  </g>
+
+  <!-- 5. TABLE: ServicePackages -->
+  <g transform="translate(1120, 160)" filter="url(#shadow)">
+    <rect width="240" height="200" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+    <rect width="240" height="36" rx="8" fill="#DB2777" />
+    <rect y="28" width="240" height="8" fill="#DB2777" />
+    <text x="16" y="24" fill="#FFFFFF" font-family="monospace" font-size="13" font-weight="bold">ServicePackages</text>
+    <g fill="#CBD5E1" font-family="monospace" font-size="12" transform="translate(16, 56)">
+      <text y="0"><tspan fill="#F43F5E" font-weight="bold">PK</tspan> Id : Guid</text>
+      <text y="22"><tspan fill="#38BDF8" font-weight="bold">FK</tspan> ServiceId : Guid</text>
+      <text y="44">Name : nvarchar(150)</text>
+      <text y="66">Price : decimal(18,2)</text>
+      <text y="88">Description : nvarchar(500)</text>
+      <text y="110">FeaturesJson : nvarchar(max)</text>
+      <text y="132">IsActive : bit</text>
+    </g>
+  </g>
+
+  <!-- 6. TABLE: Bookings -->
+  <g transform="translate(400, 440)" filter="url(#shadow)">
+    <rect width="240" height="330" rx="8" fill="#1E293B" stroke="#38BDF8" stroke-width="2" />
+    <rect width="240" height="38" rx="8" fill="#0284C7" />
+    <rect y="30" width="240" height="8" fill="#0284C7" />
+    <text x="16" y="25" fill="#FFFFFF" font-family="monospace" font-size="14" font-weight="bold">Bookings (Core Entity)</text>
+    <g fill="#CBD5E1" font-family="monospace" font-size="12" transform="translate(16, 60)">
+      <text y="0"><tspan fill="#F43F5E" font-weight="bold">PK</tspan> Id : Guid</text>
+      <text y="20">BookingCode : nvarchar(50)</text>
+      <text y="40"><tspan fill="#38BDF8" font-weight="bold">FK</tspan> CustomerId : Guid</text>
+      <text y="60"><tspan fill="#38BDF8" font-weight="bold">FK</tspan> ProviderId : Guid</text>
+      <text y="80"><tspan fill="#38BDF8" font-weight="bold">FK</tspan> ServiceId : Guid</text>
+      <text y="100">EventDate : datetime2</text>
+      <text y="120">City : nvarchar(100)</text>
+      <text y="140">TotalAmount : decimal(18,2)</text>
+      <text y="160"><tspan fill="#34D399" font-weight="bold">Status</tspan> : nvarchar(50)</text>
+      <text y="180">PaymentGateway : nvarchar(50)</text>
+      <text y="200">Rating : int?</text>
+      <text y="220">ReviewComment : nvarchar(1000)</text>
+      <text y="240">ReviewedAt : datetime2?</text>
+      <text y="260">CreatedAt : datetime2</text>
+    </g>
+  </g>
+
+  <!-- 7. TABLE: Payments -->
+  <g transform="translate(760, 700)" filter="url(#shadow)">
+    <rect width="240" height="190" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+    <rect width="240" height="36" rx="8" fill="#7C3AED" />
+    <rect y="28" width="240" height="8" fill="#7C3AED" />
+    <text x="16" y="24" fill="#FFFFFF" font-family="monospace" font-size="13" font-weight="bold">Payments</text>
+    <g fill="#CBD5E1" font-family="monospace" font-size="12" transform="translate(16, 56)">
+      <text y="0"><tspan fill="#F43F5E" font-weight="bold">PK</tspan> Id : Guid</text>
+      <text y="20">PaymentCode : nvarchar(50)</text>
+      <text y="40"><tspan fill="#38BDF8" font-weight="bold">FK</tspan> BookingId : Guid</text>
+      <text y="60">Amount : decimal(18,2)</text>
+      <text y="80">Gateway : VNPay|MoMo|SePay</text>
+      <text y="100">PaymentStatus : Success|Pending</text>
+      <text y="120">PaidAt : datetime2</text>
+    </g>
+  </g>
+
+  <!-- 8. TABLE: Reviews -->
+  <g transform="translate(1040, 580)" filter="url(#shadow)">
+    <rect width="240" height="190" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1.5" />
+    <rect width="240" height="36" rx="8" fill="#BE123C" />
+    <rect y="28" width="240" height="8" fill="#BE123C" />
+    <text x="16" y="24" fill="#FFFFFF" font-family="monospace" font-size="13" font-weight="bold">Reviews</text>
+    <g fill="#CBD5E1" font-family="monospace" font-size="12" transform="translate(16, 56)">
+      <text y="0"><tspan fill="#F43F5E" font-weight="bold">PK</tspan> Id : Guid</text>
+      <text y="20"><tspan fill="#38BDF8" font-weight="bold">FK</tspan> BookingId : Guid</text>
+      <text y="40"><tspan fill="#38BDF8" font-weight="bold">FK</tspan> CustomerId : Guid</text>
+      <text y="60"><tspan fill="#38BDF8" font-weight="bold">FK</tspan> ServiceId : Guid</text>
+      <text y="80">Rating : int (1-5)</text>
+      <text y="100">Comment : nvarchar(1000)</text>
+      <text y="120">CreatedAt : datetime2</text>
+    </g>
+  </g>
+
+  <!-- Footer Legend -->
+  <g transform="translate(40, 840)">
+    <rect width="600" height="50" rx="8" fill="#1E293B" stroke="#334155" />
+    <circle cx="25" cy="25" r="7" fill="#F43F5E" />
+    <text x="40" y="29" fill="#E2E8F0" font-family="sans-serif" font-size="12">PK: Primary Key</text>
+    <circle cx="160" cy="25" r="7" fill="#38BDF8" />
+    <text x="175" y="29" fill="#E2E8F0" font-family="sans-serif" font-size="12">FK: Foreign Key</text>
+    <circle cx="280" cy="25" r="7" fill="#34D399" />
+    <text x="295" y="29" fill="#E2E8F0" font-family="sans-serif" font-size="12">Trạng thái vòng đời Booking</text>
+    <text x="470" y="29" fill="#94A3B8" font-family="sans-serif" font-size="12">EventHub Phase 1</text>
+  </g>
+</svg>

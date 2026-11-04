@@ -9,6 +9,18 @@ Dự án phát triển đầy đủ cả 3 thành phần:
 
 ---
 
+## 📌 B12 — KIỂM TRA GIAI ĐOẠN 1 (CHECKPOINT 1)
+
+Dành cho Giảng viên / Hội đồng mở kiểm tra trực tiếp qua GitHub:
+
+| Hạng mục kiểm tra | Liên kết xem trực tiếp trên GitHub | Xem lịch sử ngày giờ commit |
+| :--- | :--- | :--- |
+| **Sơ đồ Database (ERD Trực quan)** | [📊 Xem Sơ đồ ERD SVG](https://github.com/thanhcon14022004/EventHub/blob/main/docs/database/ERD_visual.svg) • [Tài liệu ERD chi tiết](https://github.com/thanhcon14022004/EventHub/blob/main/docs/database/ERD.md) | [🕒 Lịch sử commit Database](https://github.com/thanhcon14022004/EventHub/commits/main/docs/database) |
+| **Giao diện Mockup & Figma** | [🎨 Xem Hồ sơ thiết kế Figma & 7 màn hình](https://github.com/thanhcon14022004/EventHub/blob/main/docs/mockups/FIGMA_DESIGN.md) • [Thư mục Mockups](https://github.com/thanhcon14022004/EventHub/tree/main/docs/mockups) | [🕒 Lịch sử commit Mockups](https://github.com/thanhcon14022004/EventHub/commits/main/docs/mockups) |
+| **Hướng dẫn chi tiết Check B12** | [📋 Hướng dẫn nghiệm thu Giai đoạn 1](https://github.com/thanhcon14022004/EventHub/blob/main/docs/CHECKPOINT_1_GUIDE.md) | [🕒 Toàn bộ commit repo](https://github.com/thanhcon14022004/EventHub/commits/main) |
+
+---
+
 ## 1. Cấu trúc thư mục dự án
 
 ```text
